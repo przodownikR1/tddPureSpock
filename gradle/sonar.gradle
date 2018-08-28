@@ -1,0 +1,26 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+}
+apply plugin: 'org.sonarqube'
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "tddPureSpock"
+        property "sonar.projectKey", "tddPureSpock"
+        property "sonar.login","034a03c1cfcb4043eb7f1d30bb0fadd7646e60ea"
+        property "sonar.host.url","http://localhost:9000"
+        property "sonar.exclusions",[
+            "**/*DTO.java",
+            "**/*Type.java",
+            "**/*Config.java",
+            "**/*Setting.java",
+            "**/*Application.java",
+            "**/dto/**",
+            "**/config/**",
+            "**/Profiles.java"
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+test {
+    exclude '*.groovy'
+    logging.captureStandardOutput(LogLevel.INFO)
+    logging.captureStandardOutput(LogLevel.ERROR)
+    exclude '**/integration/*Spec.*'
+    minHeapSize = '128m'
+    maxHeapSize = "1024m"
+    testLogging {
+        showCauses true
+        showExceptions true
+        showStackTraces true
+        showStandardStreams = true
+        events 'started', 'passed', 'skipped', 'failed'
+
+    }
+    forkEvery = 20
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+}
