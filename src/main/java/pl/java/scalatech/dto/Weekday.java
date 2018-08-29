@@ -2,9 +2,16 @@ package pl.java.scalatech.dto;
 
 import java.util.Arrays;
 
-public enum Weekday {
+import lombok.Getter;
 
-    SUNDAY("Sun", 1), MONDAY("Mon", 2), TUESDAY("Tue", 3), WEDNESDAY("Wed", 4), THURSDAY("Thu", 5), FRIDAY("Fri", 6), SATURDAY("Sat", 7);
+public enum Weekday {
+    SUNDAY("Sun", 1),
+    MONDAY("Mon", 2),
+    TUESDAY("Tue", 3),
+    WEDNESDAY("Wed", 4),
+    THURSDAY("Thu", 5),
+    FRIDAY("Fri", 6),
+    SATURDAY("Sat", 7);
 
     public static Weekday valueOfAbbreviation(String abbreviation) {
 
@@ -22,21 +29,15 @@ public enum Weekday {
                 .orElse(null);
     }
 
+    @Getter
     private final int position;
+    @Getter
     private final String abbreviation;
 
     Weekday(String abbreviation, int position) {
 
         this.abbreviation = abbreviation;
         this.position = position;
-    }
-
-    public String getAbbreviation() {
-        return this.abbreviation;
-    }
-
-    public int getPosition() {
-        return this.position;
     }
 
     @Override
