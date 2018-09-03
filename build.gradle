@@ -35,10 +35,10 @@ dependencies {
     compile "com.google.guava:guava:${guavaVersion}"
     compile "io.vavr:vavr:${vavrVersion}"
     compile "io.vavr:vavr-match:${vavrVersion}"
-    
+
     //compileOnly "org.springframework.boot:spring-boot-configuration-processor"
     compile 'org.projectlombok:lombok:1.18.0'
-    
+
     // LOGSTASH
     compile "ch.qos.logback:logback-core:${logbackCoreVersion}"
     compile "ch.qos.logback:logback-access:${logbackCoreVersion}"
@@ -60,12 +60,13 @@ dependencies {
     testCompile "net.bytebuddy:byte-buddy:${byteBuddyVersion}"
     testCompile "org.objenesis:objenesis:${objenesisVersion}"
     testCompile "org.mutabilitydetector:MutabilityDetector:${mutabilityDetectorVersion}"
-
+    testCompile 'nl.jqno.equalsverifier:equalsverifier:2.2.2'
     testCompile "org.springframework.boot:spring-boot-starter-test"
     testCompile "org.springframework.cloud:spring-cloud-stream-test-support"
     testCompile "org.springframework.kafka:spring-kafka-test:${springkafkaTestVersion}"
     testCompile "io.vavr:vavr-test:${vavrVersion}"
 }
+
 configurations.all {
     all*.exclude group: 'commons-logging', module: 'commons-logging' // replaced with jcl-over-slf4j
     all*.exclude group: 'org.mockito', module: 'mockito'
@@ -75,7 +76,6 @@ configurations.all {
     exclude group: "org.slf4j", module: "slf4j-jcl"
     exclude group: "org.slf4j", module: "slf4j-jdk14"
     exclude group: 'assertj-core'
-
 }
 
 dependencyManagement {
@@ -91,8 +91,6 @@ dependencyManagement {
 
 [compileJava, compileTestGroovy, compileTestJava]*.options*.encoding = "UTF-8"
 [compileJava, compileTestGroovy, compileTestJava]*.options*.compilerArgs = ["-Xlint:all,-options,-processing,-path"]
-
-
 
 jacocoTestReport {
     group = "reporting"
@@ -114,7 +112,6 @@ jacocoTestCoverageVerification {
     }
 }
 test.finalizedBy jacocoTestReport
-
 
 tasks.withType(JavaCompile) { 
     options.fork = true 
