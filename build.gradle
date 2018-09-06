@@ -10,10 +10,11 @@ buildscript {
         classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${sonarqubeGradleVersion}"
     }
 }
-
+plugins {
+    id 'info.solidsoft.pitest' version '1.3.0'
+}
 apply plugin: 'java'
 apply plugin: 'eclipse'
-//apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply from: 'gradle/test.gradle'
 apply from: 'gradle/integrationTest.gradle'
@@ -112,6 +113,15 @@ jacocoTestCoverageVerification {
     }
 }
 test.finalizedBy jacocoTestReport
+
+
+pitest {
+    targetClasses = ['pl.java.scalatech.json*']  //by default "${project.group}.*"
+    pitestVersion = '1.1.0' //not needed when a default PIT version should be used
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+    timestampedReports = false
+}
 
 tasks.withType(JavaCompile) { 
     options.fork = true 

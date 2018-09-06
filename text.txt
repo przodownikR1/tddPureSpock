@@ -1,0 +1,9 @@
+WRRCLLAAAABBBB(b)
+W – oznaczenie walidacji (1 znak)
+RR – oznaczenie typu rekordów, których liczba jest nieprawidłowa (2 znaki)
+C – oznaczenie kategorii komunikatu (1 znak)
+LL – oznaczenie klasy komunikatu (2 znaki)
+AAAA – identyfikator pola, do którego odnosi się komunikat (4 znaki)
+BBBB – identyfikator pola z innego rekordu fizycznego, którego wypełnienie powoduje, że dany
+rekord fizyczny dla, którego zgłaszany jest komunikat nie powinien zostać przekazany (4 znaki)
+b – wartość przekazana w polu BBBB
