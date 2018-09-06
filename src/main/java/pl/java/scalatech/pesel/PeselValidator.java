@@ -1,5 +1,6 @@
 package pl.java.scalatech.pesel;
 
+import static com.google.common.base.Preconditions.checkArgument;
 import static java.lang.Integer.parseInt;
 import static java.util.Objects.requireNonNull;
 import static pl.java.scalatech.pesel.PeselIdentity.regex;
@@ -16,8 +17,9 @@ public class PeselValidator implements ConstraintValidator<PeselConstraint, Stri
 
     @Override
     public boolean isValid(String pesel, ConstraintValidatorContext context) {
-        preparedMatcher(pesel);
         requireNonNull(pesel);
+        checkArgument(pesel.length()!=0);
+        preparedMatcher(pesel);
         int sum = 0;
         int position = 0;
         for (int weight : checksum) {

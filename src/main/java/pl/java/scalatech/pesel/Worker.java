@@ -1,13 +1,13 @@
 package pl.java.scalatech.pesel;
 
-import javax.validation.GroupSequence;
 import javax.validation.constraints.NotBlank;
-import javax.validation.groups.Default;
+
+import org.hibernate.validator.group.GroupSequenceProvider;
 
 import lombok.Data;
 
 @Data
-@GroupSequence({Default.class, Expensive.class})
+@GroupSequenceProvider(WorkerGroupSequenceProvider.class)
 public class Worker {
 
     private String name;

@@ -24,9 +24,9 @@ class PeselSpec extends Specification {
         given:
             Worker objectUnderTest = new Worker()
             objectUnderTest.setName("slawek")
-            objectUnderTest.setPesel("79050305971")
+            objectUnderTest.setPesel("")
         when:
-            def exceptions = validator.validateProperty(objectUnderTest, "pesel")
+            def exceptions = validator.validateProperty(objectUnderTest, "pesel", Expensive.class)
         then:
             println exceptions.getAt(0).getMessage()
     }
