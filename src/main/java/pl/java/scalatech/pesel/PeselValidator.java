@@ -12,8 +12,8 @@ import javax.validation.ConstraintValidatorContext;
 
 public class PeselValidator implements ConstraintValidator<PeselConstraint, String> {
     private static final String LAST = "last";
-    private final int checksum[] = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
-    private  Matcher matches;
+    private static final int []checksum = { 1, 3, 7, 9, 1, 3, 7, 9, 1, 3 };
+    private Matcher matches;
 
     @Override
     public boolean isValid(String pesel, ConstraintValidatorContext context) {

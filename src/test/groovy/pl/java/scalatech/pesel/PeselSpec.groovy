@@ -20,14 +20,25 @@ class PeselSpec extends Specification {
         validator = factory.getValidator()
     }
 
-    Should "pesel validator"() {
+    Should "pesel validator - notblank"() {
         given:
             Worker objectUnderTest = new Worker()
             objectUnderTest.setName("slawek")
             objectUnderTest.setPesel("")
         when:
+            def exceptions = validator.validateProperty(objectUnderTest, "pesel")
+        then:
+            exceptions.getAt(0).getMessage() == "must not be blank"
+    }
+
+    Should "pesel validator"() {
+        given:
+            Worker objectUnderTest = new Worker()
+            objectUnderTest.setName("slawek")
+            objectUnderTest.setPesel("79050305987")
+        when:
             def exceptions = validator.validateProperty(objectUnderTest, "pesel", Expensive.class)
         then:
-            println exceptions.getAt(0).getMessage()
+            exceptions.getAt(0).getMessage() == "Wrong pesel"
     }
 }

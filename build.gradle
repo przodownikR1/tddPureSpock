@@ -36,7 +36,7 @@ dependencies {
     compile "com.google.guava:guava:${guavaVersion}"
     compile "io.vavr:vavr:${vavrVersion}"
     compile "io.vavr:vavr-match:${vavrVersion}"
-
+    compile  "org.hibernate.validator:hibernate-validator:${hibernateValidatorVersion}"
     //compileOnly "org.springframework.boot:spring-boot-configuration-processor"
     compile 'org.projectlombok:lombok:1.18.0'
 
