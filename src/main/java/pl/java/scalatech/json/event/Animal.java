@@ -1,9 +1,12 @@
 package pl.java.scalatech.json.event;
 
+import java.time.LocalDate;
+import java.util.UUID;
+
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-//@JsonTypeInfo(use = Id.NAME)
+
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
 @JsonSubTypes({ 
         @JsonSubTypes.Type(value = Cat.class, name = "Cat"),
@@ -15,5 +18,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 //We can help Jackson annotating the super-class with the JsonTypeInfo annotation.
 //The annotation will add type information to the generated JSON.
 public abstract class Animal {
+    final LocalDate birthDate = LocalDate.now();
+    final UUID animalUuid = UUID.randomUUID();
     public String name;
+
+    
 }
